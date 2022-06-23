@@ -9,11 +9,14 @@ type appState = {
   somethingElse:string;
 }
 
-class App extends React.Component<appProps,appState> { 
-  state : appState = {
-    somethingElse : 'friend'
-      
-  }
+class App extends React.Component<appProps,appState> {
+  constructor(props:appProps){
+    super(props);
+    this.state = {
+      somethingElse : 'friend'      
+    }
+  } 
+  
 
   render(){
     return (
