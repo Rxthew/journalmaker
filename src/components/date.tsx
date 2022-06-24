@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 
 type dateState = {
     date : string
@@ -20,4 +20,6 @@ class Date extends React.Component<{},dateState>{
         
     }
 }
+
+export default Date
 

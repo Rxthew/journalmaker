@@ -1,18 +1,20 @@
 import React from 'react'
 
-type baseProps = {
+type baseProps = Readonly<{
     click() : void
-}
+}>
 
-type baseState = {
+type baseState = Readonly<{
     content : string
-}
+}>
 
 class readElement extends React.Component{
 
 }
 
-class FormElement extends React.Component{
+class FormElement extends React.Component<baseProps, baseState>{
+    
+
 
 }
 
