@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 
 type baseProps = Readonly<{
     action() : void
@@ -8,51 +8,50 @@ type baseState = Readonly<{
     content : string
 }>
 
-type formProps = baseProps & Readonly<{
-      push(): void,
-      cancel(): void,
-      labelfor: string,
-      requiredprop: string,
-      itemid : string,
+
+type formState = baseState & Readonly<{
+    readContent : string
 }>
 
 class readElement extends React.Component{
 
 }
 
-class FormElement extends React.Component<formProps, baseState>{
-    constructor(props:formProps){
+class FormElement extends React.Component<baseProps, formState>{
+    constructor(props:baseProps){
         super(props)
 
-        this.handleContent.bind(this)
-        this.handlePush.bind(this)
-        this.handleCancel.bind(this)
+        this.handleContent = this.handleContent.bind(this)
+        this.handleCancel = this.handleCancel.bind(this)
 
         this.state = {
-            content: ''
+            content: '',
+            readContent : ''
         }
     }
 
-    handleContent(){
+    handleContent(event:ChangeEvent<HTMLInputElement>):void{
+        this.setState( () => {
+          return   {content : event.target.value}
+        })
 
     }
 
-    handlePush(){
-
-    }
-
-    handleCancel(){
+    handleCancel():void{
+        this.setState( () => {
+            return  {content : this.state.readContent}
+          })
 
     }        
 
     render(){
         return (
             <div>
-                <button></button>
+                <button onClick={this.handleCancel}></button>
                 <form>
-                    <label></label>
-                    <input />
-                    <button></button>
+                    <label htmlFor='pliable_input'></label>
+                    <input type='text' value={this.state.content} onChange={this.handleContent} id='pliable_input' name='pliable_input'/>
+                    <button type='submit' onSubmit={this.props.action}></button>
                 </form>
             </div>
         )
