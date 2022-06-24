@@ -1,9 +1,9 @@
 import React from 'react';
 
-type dateState = {
+type dateState = Readonly<{
     date : string
 
-}
+}>
 
 class Date extends React.Component<{},dateState>{
     constructor(props:{}){
