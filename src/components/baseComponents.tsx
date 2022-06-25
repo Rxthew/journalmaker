@@ -1,28 +1,58 @@
 import React, { ChangeEvent } from 'react'
 
-type formProps = Readonly<{
-    action() : void
-}>
-
-type formState =  Readonly<{
+type formState = Readonly<{
     content : string
-    readContent : string
-}>
-
-type readProps =  Readonly<{
-    elementForm : React.ReactElement
 
 }>
 
-type pliableProps = formProps & readProps
+type formProps = Readonly<{
+    inputValue : string,
+    submitAction : (event:React.FormEvent,text: string) => void,
+}>
 
-type pliableState = formState
+type readProps = Readonly<{
+    currentValue : string
+
+}>
+
+type readState = Readonly<{
+    currentForm : React.ReactElement
+}>
 
 
-class ReadElement extends React.Component<readProps>{
+class ReadElement extends React.Component<readProps,readState>{
+    constructor(props:readProps){
+        super(props)
+        this.newForm = this.newForm.bind(this)
+        this.handlePush = this.handlePush.bind(this)
+        this.state = {
+            currentForm : <p>{this.props.currentValue}</p>
+        }
+        
+    }
+
+    newForm():void{
+        this.setState (
+            () => {
+             return {currentForm : <FormElement inputValue={this.props.currentValue} submitAction={this.handlePush}/>}
+            }
+        )
+    }
+
+    handlePush(event:React.FormEvent,text: string):void{
+        event.preventDefault()
+        this.setState(
+            () => {
+                return {currentForm : <p>{text}</p>}
+            })
+    }
+
     render(): React.ReactNode {
         return (    
-            this.props.elementForm
+            <div>
+                {this.state.currentForm}
+                <button onClick={this.newForm}>Edit</button>
+            </div>
         )
     }
     
@@ -36,8 +66,7 @@ class FormElement extends React.Component<formProps, formState>{
         this.handleCancel = this.handleCancel.bind(this)
 
         this.state = {
-            content: '',
-            readContent : ''
+            content: this.props.inputValue,
         }
     }
 
@@ -50,19 +79,19 @@ class FormElement extends React.Component<formProps, formState>{
 
     handleCancel():void{
         this.setState( () => {
-            return  {content : this.state.readContent}
+            return  {content : this.props.inputValue}
           })
 
-    }        
+    }
 
     render(){
         return (
             <div>
-                <button onClick={this.handleCancel}></button>
-                <form>
+                <button onClick={this.handleCancel}>Cancel</button>
+                <form  onSubmit={(e : React.FormEvent) => {this.props.submitAction(e,this.state.content)}}>
                     <label htmlFor='pliable_input'></label>
                     <input type='text' value={this.state.content} onChange={this.handleContent} id='pliable_input' name='pliable_input'/>
-                    <button type='submit' onSubmit={this.props.action}></button>
+                    <button type='submit'>Submit</button>
                 </form>
             </div>
         )
@@ -72,9 +101,4 @@ class FormElement extends React.Component<formProps, formState>{
 }
 
 
-class Pliable extends React.Component<pliableProps,pliableState> {
-            
-
-}
-
-export default Pliable
+export default ReadElement
