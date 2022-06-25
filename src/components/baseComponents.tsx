@@ -7,11 +7,16 @@ type formState = Readonly<{
 
 type formProps = Readonly<{
     inputValue : string,
+    textRows: number,
+    textCols: number,
     submitAction : (event:React.FormEvent,text: string) => void,
     cancelAction(): void 
+    
 }>
 
 type readProps = Readonly<{
+    textRows : number,
+    textCols : number,
     currentValue : string
 
 }>
@@ -40,7 +45,7 @@ class ReadElement extends React.Component<readProps,readState>{
         this.setState (
             () => {
                 return {
-                    currentForm: <ReadElement currentValue={this.props.currentValue}/>
+                    currentForm: <ReadElement currentValue={this.props.currentValue} textCols={this.props.textCols} textRows={this.props.textRows}/>
                 }
             }
         )
@@ -50,7 +55,8 @@ class ReadElement extends React.Component<readProps,readState>{
     newForm():void{
         this.setState (
             () => {
-             return {currentForm : <FormElement inputValue={this.props.currentValue} cancelAction={this.handleCancel} submitAction={this.handlePush}/>}
+             return {currentForm : <FormElement inputValue={this.props.currentValue} textCols={this.props.textCols} textRows={this.props.textRows}
+             cancelAction={this.handleCancel} submitAction={this.handlePush}/>}
             }
         )
     }
@@ -59,7 +65,7 @@ class ReadElement extends React.Component<readProps,readState>{
         event.preventDefault()
         this.setState(
             () => {
-                return {currentForm : <ReadElement currentValue={text}/>}
+                return {currentForm : <ReadElement currentValue={text} textCols={this.props.textCols} textRows={this.props.textRows}/>}
             })
     }
 
@@ -82,7 +88,7 @@ class FormElement extends React.Component<formProps, formState>{
         }
     }
 
-    handleContent(event:ChangeEvent<HTMLInputElement>):void{
+    handleContent(event:ChangeEvent<HTMLTextAreaElement>):void{
         this.setState( () => {
           return   {content : event.target.value}
         })
@@ -94,9 +100,8 @@ class FormElement extends React.Component<formProps, formState>{
         return (
             <div>
                 <button onClick={this.props.cancelAction}>Cancel</button>
-                <form  onSubmit={(e : React.FormEvent) => {this.props.submitAction(e,this.state.content)}}>
-                    <label htmlFor='pliable_input'></label>
-                    <input type='text' value={this.state.content} onChange={this.handleContent} id='pliable_input' name='pliable_input'/>
+                <form id='pliable_form' onSubmit={(e : React.FormEvent) => {this.props.submitAction(e,this.state.content)}}>
+                    <textarea value={this.state.content} onChange={this.handleContent} id='pliable_form' name='pliable_form' rows={this.props.textRows} cols={this.props.textCols}></textarea>
                     <button type='submit'>Submit</button>
                 </form>
             </div>
