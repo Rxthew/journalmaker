@@ -1,24 +1,35 @@
 import React, { ChangeEvent } from 'react'
 
-type baseProps = Readonly<{
+type formProps = Readonly<{
     action() : void
 }>
 
-type baseState = Readonly<{
+type formState =  Readonly<{
     content : string
-}>
-
-
-type formState = baseState & Readonly<{
     readContent : string
 }>
 
-class readElement extends React.Component{
+type readProps =  Readonly<{
+    elementForm : React.ReactElement
 
+}>
+
+type pliableProps = formProps & readProps
+
+type pliableState = formState
+
+
+class ReadElement extends React.Component<readProps>{
+    render(): React.ReactNode {
+        return (    
+            this.props.elementForm
+        )
+    }
+    
 }
 
-class FormElement extends React.Component<baseProps, formState>{
-    constructor(props:baseProps){
+class FormElement extends React.Component<formProps, formState>{
+    constructor(props:formProps){
         super(props)
 
         this.handleContent = this.handleContent.bind(this)
@@ -61,7 +72,8 @@ class FormElement extends React.Component<baseProps, formState>{
 }
 
 
-class Pliable extends React.Component {
+class Pliable extends React.Component<pliableProps,pliableState> {
+            
 
 }
 
