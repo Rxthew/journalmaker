@@ -40,7 +40,6 @@ class ReadElement extends React.Component<readProps,readState>{
         this.state = {
             currentForm : <div>
                           <this.props.element content={this.props.currentValue}/>
-                          <p>{this.props.currentValue}</p>
                           <button onClick={this.newForm}>Edit</button>
                           </div>
                             

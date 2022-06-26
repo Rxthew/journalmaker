@@ -3,7 +3,7 @@ import {ReadElement, ParagraphElement, TitleElement} from './baseComponents'
 
 type entryProps = {del() : void}
 
-class journalEntry extends React.Component<entryProps>{
+class JournalEntry extends React.Component<entryProps>{
     render(): React.ReactNode {
         return(
             <div>
@@ -24,4 +24,4 @@ class journalEntry extends React.Component<entryProps>{
     }
 }
 
-export default journalEntry
+export default JournalEntry
