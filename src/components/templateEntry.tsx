@@ -2,14 +2,13 @@ import React from 'react'
 import {ReadElement, ParagraphElement, TitleElement} from './baseComponents'
 import {v4} from 'uuid'
 
-type entryProps = {del() : void
-                    key: string 
-                    id: string }
+type entryProps = {del() : void }
 
 class JournalEntry extends React.Component<entryProps>{
+    ref = v4()
     render(): React.ReactNode {
         return(
-            <div key={v4()} id={v4()}>
+            <div key={v4()} id={this.ref}>
                 <dl>
                     <dt>
                     <ReadElement element={TitleElement} currentValue='' textCols={20} textRows={2}/>
