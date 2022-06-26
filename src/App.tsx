@@ -16,7 +16,9 @@ class App extends React.Component<{},appState> {
       elementList : [<ReadElement currentValue='John Doe' element={TitleElement} textCols={20} textRows={20}/>,<JournalEntry del={()=>{}}/>]           
     }
     this.appRoot = <div>{this.state.elementList}</div>
-  } 
+  }
+  
+  
   render(){
     return (
         this.appRoot
