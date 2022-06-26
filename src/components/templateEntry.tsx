@@ -1,5 +1,5 @@
 import React from 'react'
-import ReadElement from './baseComponents'
+import {ReadElement, ParagraphElement, TitleElement} from './baseComponents'
 
 type entryProps = {del() : void}
 
@@ -9,13 +9,13 @@ class journalEntry extends React.Component<entryProps>{
             <div>
                 <dl>
                     <dt>
-                    <ReadElement currentValue='' textCols={20} textRows={2}/>
+                    <ReadElement element={TitleElement} currentValue='' textCols={20} textRows={2}/>
                     </dt>
                     <dt>
-                    <ReadElement currentValue='Date:' textCols={20} textRows={2}/>
+                    <ReadElement element={ParagraphElement} currentValue='Date:' textCols={20} textRows={2}/>
                     </dt>
                     <dd>
-                    <ReadElement currentValue=''textCols={20} textRows={20}/>
+                    <ReadElement element={ParagraphElement} currentValue=''textCols={20} textRows={20}/>
                     </dd>
                 </dl>
                 <button onClick={this.props.del}>Delete</button>

@@ -1,12 +1,15 @@
 import React, { ChangeEvent } from 'react'
 
+type elementProps = Readonly<{
+    content : string
+}>
+
 type formState = Readonly<{
     content : string
 
 }>
 
-type formProps = Readonly<{
-    inputValue : string,
+type formProps = elementProps & Readonly<{
     textRows: number,
     textCols: number,
     submitAction : (event:React.FormEvent,text: string) => void,
@@ -14,10 +17,12 @@ type formProps = Readonly<{
     
 }>
 
+
 type readProps = Readonly<{
     textRows : number,
     textCols : number,
     currentValue : string
+    element : React.ComponentClass<elementProps>
 
 }>
 
@@ -25,8 +30,8 @@ type readState = Readonly<{
     currentForm : React.ReactElement
 }>
 
-
 class ReadElement extends React.Component<readProps,readState>{
+    
     constructor(props:readProps){
         super(props)
         this.newForm = this.newForm.bind(this)
@@ -34,18 +39,20 @@ class ReadElement extends React.Component<readProps,readState>{
         this.handleCancel = this.handleCancel.bind(this)
         this.state = {
             currentForm : <div>
-                            <p>{this.props.currentValue}</p>
-                            <button onClick={this.newForm}>Edit</button>
+                          <this.props.element content={this.props.currentValue}/>
+                          <p>{this.props.currentValue}</p>
+                          <button onClick={this.newForm}>Edit</button>
                           </div>
+                            
         }
         
     }
-
+    
     handleCancel():void{
         this.setState (
             () => {
                 return {
-                    currentForm: <ReadElement currentValue={this.props.currentValue} textCols={this.props.textCols} textRows={this.props.textRows}/>
+                    currentForm: <ReadElement element={this.props.element} currentValue={this.props.currentValue} textCols={this.props.textCols} textRows={this.props.textRows}/>
                 }
             }
         )
@@ -55,7 +62,7 @@ class ReadElement extends React.Component<readProps,readState>{
     newForm():void{
         this.setState (
             () => {
-             return {currentForm : <FormElement inputValue={this.props.currentValue} textCols={this.props.textCols} textRows={this.props.textRows}
+             return {currentForm : <FormElement content={this.props.currentValue} textCols={this.props.textCols} textRows={this.props.textRows}
              cancelAction={this.handleCancel} submitAction={this.handlePush}/>}
             }
         )
@@ -65,7 +72,7 @@ class ReadElement extends React.Component<readProps,readState>{
         event.preventDefault()
         this.setState(
             () => {
-                return {currentForm : <ReadElement currentValue={text} textCols={this.props.textCols} textRows={this.props.textRows}/>}
+                return {currentForm : <ReadElement element={this.props.element} currentValue={text} textCols={this.props.textCols} textRows={this.props.textRows}/>}
             })
     }
 
@@ -84,7 +91,7 @@ class FormElement extends React.Component<formProps, formState>{
         this.handleContent = this.handleContent.bind(this)
 
         this.state = {
-            content: this.props.inputValue,
+            content: this.props.content,
         }
     }
 
@@ -111,5 +118,27 @@ class FormElement extends React.Component<formProps, formState>{
 
 }
 
+class ParagraphElement extends React.Component<elementProps>{
+    render(): React.ReactNode {
+        return (
+        <>
+        <p>{this.props.content}</p>
+        </>
+        )
+    }
+}
 
-export default ReadElement
+class TitleElement extends React.Component<elementProps>{
+    render(): React.ReactNode {
+        return (
+            <>
+            <h2>{this.props.content}</h2>
+            </>
+
+        )
+    }
+}
+
+
+export {ReadElement, ParagraphElement, TitleElement} 
+
