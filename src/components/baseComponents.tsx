@@ -138,6 +138,17 @@ class TitleElement extends React.Component<elementProps>{
     }
 }
 
+class NameElement extends React.Component<elementProps>{
+    render(): React.ReactNode {
+        return (
+            <>
+            <h1>{this.props.content}</h1>
+            </>
 
-export {ReadElement, ParagraphElement, TitleElement} 
+        )
+    }
+}
+
+
+export {ReadElement, ParagraphElement, TitleElement, NameElement} 
 
