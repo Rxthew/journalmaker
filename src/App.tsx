@@ -13,6 +13,7 @@ class App extends React.Component<{},appState> {
   constructor(props:{}){
     super(props);
     this.deleteEntry = this.deleteEntry.bind(this)
+    this.addNewEntry = this.addNewEntry.bind(this)
     this.state = {
       elementList : [<JournalEntry key={v4()} id={v4()} del={this.deleteEntry}/>,<JournalEntry key={v4()} id={v4()} del={this.deleteEntry}/>]           
     }
@@ -28,6 +29,14 @@ class App extends React.Component<{},appState> {
        })
   }
 
+  addNewEntry(){
+    this.setState ( () => {
+      return {
+        elementList : [...this.state.elementList, <JournalEntry key={v4()} id={v4()} del={this.deleteEntry}/>]
+      }
+    })
+  }
+
   render(){
     return (
       <div>
@@ -36,7 +45,7 @@ class App extends React.Component<{},appState> {
               {this.state.elementList}
           </main>
           <aside>
-              <button onClick={this.addNewEntry}></button>
+              <button onClick={this.addNewEntry}>Add Entry</button>
           </aside>
       </div>
     )   
