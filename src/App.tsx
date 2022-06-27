@@ -31,8 +31,13 @@ class App extends React.Component<{},appState> {
   render(){
     return (
       <div>
-      <HeaderElement/>
-      {this.state.elementList}
+          <HeaderElement/>
+          <main>
+              {this.state.elementList}
+          </main>
+          <aside>
+              <button onClick={this.addNewEntry}></button>
+          </aside>
       </div>
     )   
   }
