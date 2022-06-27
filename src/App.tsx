@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
-import {ReadElement,ParagraphElement,TitleElement} from './components/baseComponents'
+import {ReadElement,TitleElement} from './components/baseComponents'
 import JournalEntry from './components/templateEntry'
+import {v4} from 'uuid'
 
 
 type appState = Readonly<{
@@ -9,19 +10,30 @@ type appState = Readonly<{
 }>
 
 class App extends React.Component<{},appState> {
-  appRoot: React.ReactElement
   constructor(props:{}){
     super(props);
+    this.deleteEntry = this.deleteEntry.bind(this)
     this.state = {
-      elementList : [<ReadElement currentValue='John Doe' element={TitleElement} textCols={20} textRows={20}/>,<JournalEntry del={()=>{}}/>]           
+      elementList : [<JournalEntry key={v4()} id={v4()} del={this.deleteEntry}/>,<JournalEntry key={v4()} id={v4()} del={this.deleteEntry}/>]           
     }
-    this.appRoot = <div>{this.state.elementList}</div>
+     
   }
   
-  
+  deleteEntry(event:React.MouseEvent){
+      const checkId:string = event.currentTarget.id
+      this.setState( () => {
+        return {
+         elementList: this.state.elementList.filter(elem => elem.props.id !== checkId)
+       }
+       })
+  }
+
   render(){
     return (
-        this.appRoot
+      <div>
+      <ReadElement currentValue='John Doe' element={TitleElement} textCols={20} textRows={20}/>
+      {this.state.elementList}
+      </div>
     )   
   }
     
