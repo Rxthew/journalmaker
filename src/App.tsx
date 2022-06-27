@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {ReadElement,TitleElement} from './components/baseComponents'
+import HeaderElement from './components/header'
 import JournalEntry from './components/templateEntry'
 import {v4} from 'uuid'
 
@@ -31,7 +31,7 @@ class App extends React.Component<{},appState> {
   render(){
     return (
       <div>
-      <ReadElement currentValue='John Doe' element={TitleElement} textCols={20} textRows={20}/>
+      <HeaderElement/>
       {this.state.elementList}
       </div>
     )   
