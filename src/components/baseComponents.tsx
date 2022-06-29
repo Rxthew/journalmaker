@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 
 type elementProps = Readonly<{
     content : string
@@ -30,57 +30,41 @@ type readState = Readonly<{
     currentForm : React.ReactElement
 }>
 
-class ReadElement extends React.Component<readProps,readState>{
-    
-    constructor(props:readProps){
-        super(props)
-        this.newForm = this.newForm.bind(this)
-        this.handlePush = this.handlePush.bind(this)
-        this.handleCancel = this.handleCancel.bind(this)
-        this.state = {
-            currentForm : <div>
-                          <this.props.element content={this.props.currentValue}/>
-                          <button onClick={this.newForm}>Edit</button>
-                          </div>
-                            
-        }
-        
-    }
-    
-    handleCancel():void{
-        this.setState (
-            () => {
-                return {
-                    currentForm: <ReadElement element={this.props.element} currentValue={this.props.currentValue} textCols={this.props.textCols} textRows={this.props.textRows}/>
-                }
-            }
-        )
-    }
-        
+const ReadElement = function(props: readProps): JSX.Element{
 
-    newForm():void{
-        this.setState (
-            () => {
-             return {currentForm : <FormElement content={this.props.currentValue} textCols={this.props.textCols} textRows={this.props.textRows}
-             cancelAction={this.handleCancel} submitAction={this.handlePush}/>}
-            }
-        )
+    const newForm = function():void{
+        const initForm = <FormElement content={props.currentValue} textCols={props.textCols} textRows={props.textRows}
+        cancelAction={handleCancel} submitAction={handlePush}/>
+        setCurrentForm(initForm)
+        return
     }
 
-    handlePush(event:React.FormEvent,text: string):void{
+    const [currentForm,setCurrentForm] = useState(
+    <div>
+        <props.element content={props.currentValue}/>
+        <button onClick={newForm}>Edit</button>
+    </div>
+    )
+
+
+    const handleCancel = function():void{
+        const revertForm =  <ReadElement element={props.element} currentValue={props.currentValue} textCols={props.textCols} 
+        textRows={props.textRows}/>
+        setCurrentForm(revertForm)
+        return
+
+    }
+
+    const handlePush = function(event:React.FormEvent,text: string):void{
+        const revertForm =  <ReadElement element={props.element} currentValue={props.currentValue} textCols={props.textCols}
+        textRows={props.textRows}/> 
         event.preventDefault()
-        this.setState(
-            () => {
-                return {currentForm : <ReadElement element={this.props.element} currentValue={text} textCols={this.props.textCols} textRows={this.props.textRows}/>}
-            })
+        setCurrentForm(revertForm)
+        return              
     }
-
-    render(): React.ReactNode {
-        return (    
-              this.state.currentForm
-        )
-    }
-    
+    return(
+        currentForm
+    )
 }
 
 class FormElement extends React.Component<formProps, formState>{
