@@ -85,37 +85,31 @@ const FormElement = function(props:formProps):JSX.Element{
 
 }
 
-
-class ParagraphElement extends React.Component<elementProps>{
-    render(): React.ReactNode {
-        return (
+const ParagraphElement = function (props:elementProps):JSX.Element{
+    return(
         <>
-        <p>{this.props.content}</p>
+        <p>{props.content}</p>
         </>
-        )
-    }
+    )
+    
 }
 
-class TitleElement extends React.Component<elementProps>{
-    render(): React.ReactNode {
-        return (
-            <>
-            <h2>{this.props.content}</h2>
-            </>
+const NameElement = function(props:elementProps):JSX.Element{
+    return(
+        <>
+        <h1>{props.content}</h1>
+        </>
+    )
 
-        )
-    }
 }
 
-class NameElement extends React.Component<elementProps>{
-    render(): React.ReactNode {
-        return (
-            <>
-            <h1>{this.props.content}</h1>
-            </>
+const TitleElement= function(props:elementProps):JSX.Element{
+    return(
+        <>
+        <h2>{props.content}</h2>
+        </>
+    )
 
-        )
-    }
 }
 
 
