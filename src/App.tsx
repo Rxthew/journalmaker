@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import HeaderElement from './components/header'
 import JournalEntry from './components/templateEntry'
+import {ReactComponent as Add} from './journalicons/add.svg'
 import {v4} from 'uuid'
 
 
@@ -45,7 +46,7 @@ class App extends React.Component<{},appState> {
               {this.state.elementList}
           </main>
           <aside>
-              <button onClick={this.addNewEntry}>Add Entry</button>
+              <button onClick={this.addNewEntry}><Add/></button>
           </aside>
       </div>
     )   

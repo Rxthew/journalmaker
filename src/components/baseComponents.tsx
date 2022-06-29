@@ -1,4 +1,6 @@
 import React, { ChangeEvent, useState } from 'react'
+import {ReactComponent as Edit} from '../journalicons/edit.svg'
+
 
 
 type elementProps = Readonly<{
@@ -38,7 +40,7 @@ const ReadElement = function(props: readProps): JSX.Element{
     const [currentForm,setCurrentForm] = useState<readState>(
     <div>
         <props.element content={props.currentValue}/>
-        <button onClick={newForm}>Edit</button>
+        <button onClick={newForm}><Edit /></button>
     </div>
     )
 

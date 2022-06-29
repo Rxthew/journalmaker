@@ -1,5 +1,6 @@
 import React, { MouseEventHandler } from 'react'
 import {ReadElement, ParagraphElement, TitleElement} from './baseComponents'
+import {ReactComponent as Delete} from '../journalicons/delete.svg'
 
 
 type entryProps = {
@@ -24,7 +25,7 @@ class JournalEntry extends React.Component<entryProps>{
                     <ReadElement element={ParagraphElement} currentValue=''textCols={20} textRows={20}/>
                     </dd>
                 </dl>
-                <button onClick={this.props.del} id={this.props.id}>Delete</button>
+                <button onClick={this.props.del} id={this.props.id}><Delete /></button>
             </div>
         )
     }
