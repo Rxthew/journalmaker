@@ -5,10 +5,6 @@ type elementProps = Readonly<{
     content : string
 }>
 
-type formState = Readonly<{
-    content : string
-
-}>
 
 type formProps = elementProps & Readonly<{
     textRows: number,
@@ -67,39 +63,28 @@ const ReadElement = function(props: readProps): JSX.Element{
     )
 }
 
-class FormElement extends React.Component<formProps, formState>{
-    constructor(props:formProps){
-        super(props)
 
-        this.handleContent = this.handleContent.bind(this)
+const FormElement = function(props:formProps):JSX.Element{
 
-        this.state = {
-            content: this.props.content,
-        }
+    const handleContent = function(event:ChangeEvent<HTMLTextAreaElement>):void{
+        setFormContent(event.target.value)
+        return
     }
 
-    handleContent(event:ChangeEvent<HTMLTextAreaElement>):void{
-        this.setState( () => {
-          return   {content : event.target.value}
-        })
+    const [formContent,setFormContent] = useState<string>(props.content)
 
-    }
-
-
-    render(){
-        return (
-            <div>
-                <button onClick={this.props.cancelAction}>Cancel</button>
-                <form id='pliable_form' onSubmit={(e : React.FormEvent) => {this.props.submitAction(e,this.state.content)}}>
-                    <textarea value={this.state.content} onChange={this.handleContent} id='pliable_form' name='pliable_form' rows={this.props.textRows} cols={this.props.textCols}></textarea>
-                    <button type='submit'>Submit</button>
-                </form>
-            </div>
-        )
-    }
-
+    return (
+        <div>
+            <button onClick={props.cancelAction}>Cancel</button>
+            <form id='pliable_form' onSubmit={(e : React.FormEvent) => {props.submitAction(e,formContent)}}>
+                <textarea value={formContent} onChange={handleContent} id='pliable_form' name='pliable_form' rows={props.textRows} cols={props.textCols}></textarea>
+                <button type='submit'>Submit</button>
+            </form>
+        </div>
+    )
 
 }
+
 
 class ParagraphElement extends React.Component<elementProps>{
     render(): React.ReactNode {
