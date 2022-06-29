@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useState } from 'react'
 
+
 type elementProps = Readonly<{
     content : string
 }>
@@ -26,9 +27,8 @@ type readProps = Readonly<{
 
 }>
 
-type readState = Readonly<{
-    currentForm : React.ReactElement
-}>
+type readState = Readonly< JSX.Element
+>
 
 const ReadElement = function(props: readProps): JSX.Element{
 
@@ -39,7 +39,7 @@ const ReadElement = function(props: readProps): JSX.Element{
         return
     }
 
-    const [currentForm,setCurrentForm] = useState(
+    const [currentForm,setCurrentForm] = useState<readState>(
     <div>
         <props.element content={props.currentValue}/>
         <button onClick={newForm}>Edit</button>
