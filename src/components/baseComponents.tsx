@@ -72,11 +72,11 @@ const FormElement = function(props:formProps):JSX.Element{
         <div>
             <button onClick={props.cancelAction}>Cancel</button>
             <form id='pliable_form' onSubmit={(e : React.FormEvent) => {props.submitAction(e,formContent)}}>
-                <textarea value={formContent} onChange={handleContent} id='pliable_form' name='pliable_form'></textarea>
+                <textarea value={formContent} onChange={handleContent} id='pliable_form' name='pliable_form' autoFocus={true}></textarea>
                 <button type='submit'>Submit</button>
             </form>
         </div>
-    )
+    ) 
 
 }
 
