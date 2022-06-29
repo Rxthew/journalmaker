@@ -9,8 +9,6 @@ type elementProps = Readonly<{
 
 
 type formProps = elementProps & Readonly<{
-    textRows: number,
-    textCols: number,
     submitAction : (event:React.FormEvent,text: string) => void,
     cancelAction(): void 
     
@@ -18,8 +16,6 @@ type formProps = elementProps & Readonly<{
 
 
 type readProps = Readonly<{
-    textRows : number,
-    textCols : number,
     currentValue : string
     element(props:elementProps) : JSX.Element
 
@@ -31,8 +27,7 @@ type readState = Readonly< JSX.Element
 const ReadElement = function(props: readProps): JSX.Element{
 
     const newForm = function():void{
-        const initForm = <FormElement content={props.currentValue} textCols={props.textCols} textRows={props.textRows}
-        cancelAction={handleCancel} submitAction={handlePush}/>
+        const initForm = <FormElement content={props.currentValue} cancelAction={handleCancel} submitAction={handlePush}/>
         setCurrentForm(initForm)
         return
     }
@@ -46,16 +41,14 @@ const ReadElement = function(props: readProps): JSX.Element{
 
 
     const handleCancel = function():void{
-        const revertForm =  <ReadElement element={props.element} currentValue={props.currentValue} textCols={props.textCols} 
-        textRows={props.textRows}/>
+        const revertForm =  <ReadElement element={props.element} currentValue={props.currentValue}/>
         setCurrentForm(revertForm)
         return
 
     }
 
     const handlePush = function(event:React.FormEvent,text: string):void{
-        const revertForm =  <ReadElement element={props.element} currentValue={text} textCols={props.textCols}
-        textRows={props.textRows}/> 
+        const revertForm =  <ReadElement element={props.element} currentValue={text}/> 
         event.preventDefault()
         setCurrentForm(revertForm)
         return              
@@ -79,7 +72,7 @@ const FormElement = function(props:formProps):JSX.Element{
         <div>
             <button onClick={props.cancelAction}>Cancel</button>
             <form id='pliable_form' onSubmit={(e : React.FormEvent) => {props.submitAction(e,formContent)}}>
-                <textarea value={formContent} onChange={handleContent} id='pliable_form' name='pliable_form' rows={props.textRows} cols={props.textCols}></textarea>
+                <textarea value={formContent} onChange={handleContent} id='pliable_form' name='pliable_form'></textarea>
                 <button type='submit'>Submit</button>
             </form>
         </div>

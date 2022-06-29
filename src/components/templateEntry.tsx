@@ -16,13 +16,13 @@ class JournalEntry extends React.Component<entryProps>{
             <div>
                 <dl>
                     <dt>
-                    <ReadElement element={TitleElement} currentValue='' textCols={20} textRows={2}/>
+                    <ReadElement element={TitleElement} currentValue=''/>
                     </dt>
                     <dt>
-                    <ReadElement element={ParagraphElement} currentValue='Date:' textCols={20} textRows={2}/>
+                    <ReadElement element={ParagraphElement} currentValue='Date:'/>
                     </dt>
                     <dd>
-                    <ReadElement element={ParagraphElement} currentValue=''textCols={20} textRows={20}/>
+                    <ReadElement element={ParagraphElement} currentValue=''/>
                     </dd>
                 </dl>
                 <button onClick={this.props.del} id={this.props.id}><Delete /></button>
