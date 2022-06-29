@@ -1,7 +1,7 @@
 *, *::before, *::after{
     margin: 0;
     padding : 0;
-    box-sizing: inherit
+    box-sizing: inherit;
 }
 
 html {
@@ -10,4 +10,63 @@ html {
 
 #root {
     display: flex;
+    justify-content: center;   
 }
+
+#root > div {
+    border-left: 1px solid;
+    border-right: 1px solid;
+    min-height: 100vh;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+aside, h1 {
+    text-align: center;
+}
+
+aside div, header div, main div{
+    display: flex
+}
+
+button{
+    align-self: flex-start;
+    background-color: white;
+    border: none;
+    box-shadow: none;
+}
+
+
+dd, dt {
+    margin-top: 1rem;
+    background-color: aquamarine;
+}
+
+div{
+    min-width: min(100vw, 500px);
+}
+
+h1 ,h2, p {
+    white-space: pre-wrap;
+    flex-grow: 1;
+}
+
+
+main > div {
+    border-top: 1px solid;
+    border-left: 1px solid;
+    padding-top: 1rem;
+    border-top-left-radius: 1rem;
+}
+
+main > div > button {
+    align-self: stretch;
+    margin-left: 0.5rem;
+}
+
+
+
+
+
+
