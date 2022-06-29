@@ -52,7 +52,7 @@ const ReadElement = function(props: readProps): JSX.Element{
     }
 
     const handlePush = function(event:React.FormEvent,text: string):void{
-        const revertForm =  <ReadElement element={props.element} currentValue={props.currentValue} textCols={props.textCols}
+        const revertForm =  <ReadElement element={props.element} currentValue={text} textCols={props.textCols}
         textRows={props.textRows}/> 
         event.preventDefault()
         setCurrentForm(revertForm)
