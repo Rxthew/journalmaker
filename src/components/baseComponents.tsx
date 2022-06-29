@@ -19,7 +19,7 @@ type readProps = Readonly<{
     textRows : number,
     textCols : number,
     currentValue : string
-    element : React.ComponentClass<elementProps>
+    element(props:elementProps) : JSX.Element
 
 }>
 
