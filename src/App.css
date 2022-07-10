@@ -68,7 +68,11 @@ dd, dt {
 }
 
 div{
-    min-width: min(100vw, 500px);
+    min-width: min(80vw, 500px);
+}
+
+dt > div, dd > div {
+    max-width: 500px
 }
 
 form {
@@ -76,7 +80,7 @@ form {
     border-left: 1px solid;
     padding-top: 1rem;
     border-top-left-radius: 1rem;
-    min-width: min(90vw, 500px);;
+    min-width: min(80vw, 500px);;
     position: absolute;
     top: 25vh;
     bottom: 25vh;
