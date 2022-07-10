@@ -14,44 +14,48 @@ html {
 }
 
 #root > div {
-    color: #FA2742;
-    fill:  #FA2742;
     background-color: #EBEAE3;
     border-left: 1px solid;
     border-right: 1px solid;
+    color: #FA2742;
+    fill:  #FA2742;
     min-height: 100vh;
     padding-left: 1rem;
     padding-right: 1rem;
 }
 
 .cancel {
+    color: #FA2742;
+    font-size: large;
+    font-weight: bold;
     margin-left: auto;
     margin-top: -1rem;
     padding: 1rem;
-    font-size: large;
-    font-weight: bold;
-    color: #FA2742;
+    
+    
 }
 
 .overlay {
-    position: fixed;
+    background-color: black;
     min-width: 100vw;
     min-height: 100vh;
-    background-color: black;
     opacity: 0.7;
-    top: 0;
+
+    position: fixed;
     left: 0;
+    top: 0;
+    
 }
 
 .submit {
-    padding: 1rem;
-    font-size: large;
-    font-weight: bold;
     align-self: center;
-    min-width: 90%;
-    color: #FA2742;
     background-color: white;
     border-radius: 10px;
+    color: #FA2742;
+    font-size: large;
+    font-weight: bold;
+    min-width: 90%;
+    padding: 1rem;
 
 
 }
@@ -91,32 +95,40 @@ form {
     background-color: #EBEAE3;
     border-top: 1px solid;
     border-left: 1px solid;
-    padding-top: 1rem;
     border-top-left-radius: 1rem;
-    min-width: min(80vw, 500px);;
-    position: absolute;
-    top: 25vh;
-    bottom: 25vh;
-    z-index: 20;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+
+    min-width: min(80vw, 500px);
+    padding-top: 1rem;
+
+    position: absolute;
+    bottom: 25vh;
+    top: 25vh;
+    
+    z-index: 20;
+   
+}
 
 
 h1 ,h2, p {
-    white-space: pre-wrap;
     flex-grow: 1;
+    white-space: pre-wrap;
+    word-break: break-all;
+    
 }
+
 
 
 main > div {
     border-top: 1px solid;
     border-left: 1px solid;
-    padding-top: 1rem;
     border-top-left-radius: 1rem;
+    padding-top: 1rem;
+    
 }
 
 main > div > button {
@@ -126,21 +138,20 @@ main > div > button {
 
 
 textarea {
-    color: white;
-    font-size: larger;
-    flex-grow: 0.5;
-    width: 90%;
-    resize: none;
     background-color: #373833;
     border-radius: 10px;
-
+    color: white;
+    flex-grow: 0.5;
+    font-size: larger;
+    resize: none;
+    width: 90%;
+    
 }
 
 textarea:focus {
+    border: 1px solid #FA2742;
+    box-shadow: 0 0 10px #FA2742;
     outline: none !important;
-    border-color: 2px solid red;
-    box-shadow: 0 0 10px red
-
 }
 
 
