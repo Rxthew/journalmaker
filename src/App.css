@@ -60,6 +60,9 @@ html {
 
 }
 
+aside {
+    margin-top: 2rem;
+}
 
 aside, h1 {
     text-align: center;
@@ -116,6 +119,7 @@ form {
 
 h1 ,h2, p {
     flex-grow: 1;
+    line-height: 2em;
     white-space: pre-wrap;
     word-break: break-all;
     
