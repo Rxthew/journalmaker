@@ -3,6 +3,8 @@ import {ReadElement, ParagraphElement, TitleElement} from './baseComponents'
 import {ReactComponent as Delete} from '../journalicons/delete.svg'
 
 
+
+
 type entryProps = {
     del:MouseEventHandler, 
     id : string,
