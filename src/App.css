@@ -56,6 +56,7 @@ html {
     color: #FA2742;
     font-size: large;
     font-weight: bold;
+    max-height: 20%;
     min-width: 90%;
     padding: 1rem;
 
@@ -107,7 +108,9 @@ form {
     flex-direction: column;
     gap: 15px;
 
+    min-height: fit-content;
     min-width: min(80vw, 600px);
+    overflow: scroll;
     padding-top: 1rem;
 
     position: absolute;
@@ -148,8 +151,9 @@ textarea {
     background-color: #373833;
     border-radius: 10px;
     color: white;
-    flex-grow: 0.5;
+    flex-grow: 1;
     font-size: larger;
+    max-height: 40%;
     resize: none;
     width: 90%;
     
