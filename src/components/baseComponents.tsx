@@ -73,7 +73,7 @@ const FormElement = function(props:formProps):JSX.Element{
             <div className='overlay'></div>
             <form id='pliable_form' onSubmit={(e : React.FormEvent) => {props.submitAction(e,formContent)}}>
                 <button className='cancel' onClick={props.cancelAction}>X</button>
-                <textarea value={formContent} onChange={handleContent} id='pliable_form' name='pliable_form' autoFocus={true}></textarea>
+                <textarea value={formContent} onChange={handleContent} id='pliable_form' name='pliable_form' autoFocus={true} rows={5}></textarea>
                 <button className='submit' type='submit'>Submit</button>
             </form>
         </div>
