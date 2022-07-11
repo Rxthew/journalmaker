@@ -1,3 +1,4 @@
+
 *, *::before, *::after{
     margin: 0;
     padding : 0;
@@ -10,7 +11,8 @@ html {
 
 #root {
     display: flex;
-    justify-content: center;   
+    justify-content: center;
+    background-color: #A52A2A;   
 }
 
 #root > div {
@@ -87,11 +89,11 @@ dd, dt {
 }
 
 div{
-    min-width: min(80vw, 500px);
+    min-width: min(80vw, 600px);
 }
 
 dt > div, dd > div {
-    max-width: 500px
+    max-width: 600px
 }
 
 form {
@@ -105,7 +107,7 @@ form {
     flex-direction: column;
     gap: 15px;
 
-    min-width: min(80vw, 500px);
+    min-width: min(80vw, 600px);
     padding-top: 1rem;
 
     position: absolute;
@@ -120,6 +122,7 @@ form {
 h1 ,h2, p {
     flex-grow: 1;
     line-height: 2em;
+    padding-left: 0.3rem;
     white-space: pre-wrap;
     word-break: break-all;
     
