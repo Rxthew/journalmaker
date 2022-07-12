@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/journalmaker/static/css/main.d75ea622.css",
+    "main.css": "/journalmaker/static/css/main.9e404a88.css",
     "main.js": "/journalmaker/static/js/main.5b870bc5.js",
     "static/media/add.svg": "/journalmaker/static/media/add.fa08693af189c5f9b581148634b5ab09.svg",
     "index.html": "/journalmaker/index.html",
     "static/media/print.svg": "/journalmaker/static/media/print.3cc76ade36a94a349e281f5798f324a7.svg",
     "static/media/delete.svg": "/journalmaker/static/media/delete.1e7fcca39a075972136eb5c50bf00240.svg",
     "static/media/edit.svg": "/journalmaker/static/media/edit.771194f3a4b3301f064545d6afa86dd3.svg",
-    "main.d75ea622.css.map": "/journalmaker/static/css/main.d75ea622.css.map",
+    "main.9e404a88.css.map": "/journalmaker/static/css/main.9e404a88.css.map",
     "main.5b870bc5.js.map": "/journalmaker/static/js/main.5b870bc5.js.map"
   },
   "entrypoints": [
-    "static/css/main.d75ea622.css",
+    "static/css/main.9e404a88.css",
     "static/js/main.5b870bc5.js"
   ]
 }
