@@ -28,7 +28,7 @@ class JournalEntry extends React.Component<entryProps>{
                      Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. '/>
                     </dd>
                 </dl>
-                <button onClick={this.props.del} id={this.props.id}><Delete /></button>
+                <button onClick={this.props.del} id={this.props.id} aria-label='Delete entry'><Delete /></button>
             </div>
         )
     }

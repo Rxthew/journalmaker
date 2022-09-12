@@ -7,7 +7,7 @@ class HeaderElement extends React.Component {
     render(): React.ReactNode {
         return (
             <header>
-                <button onClick={function():void{window.print()}}><Print/></button>
+                <button aria-label='Print Journal' onClick={function():void{window.print()}}><Print/></button>
                 <ReadElement currentValue='Jane Smith' element={NameElement} />
             </header>
         )

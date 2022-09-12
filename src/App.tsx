@@ -46,7 +46,7 @@ class App extends React.Component<{},appState> {
               {this.state.elementList}
           </main>
           <aside>
-              <button onClick={this.addNewEntry}><Add/></button>
+              <button aria-label='Add new entry' onClick={this.addNewEntry}><Add/></button>
           </aside>
       </div>
     )   
