@@ -66,12 +66,22 @@ const FormElement = function(props:formProps):JSX.Element{
         return
     }
 
+    const modalTabTrap = function(event: React.FocusEvent<HTMLFormElement, Element>):void{
+        const parent = event.currentTarget
+        if(parent.contains(event.relatedTarget)){
+            return
+        }
+        const cancel = Array.from(parent.children)[0] as HTMLButtonElement
+        setTimeout(() => cancel.focus(),0)
+
+    }
+
     const [formContent,setFormContent] = useState<string>(props.content)
 
     return (
         <div>
             <div className='overlay'></div>
-            <form id='pliable_form' onSubmit={(e : React.FormEvent) => {props.submitAction(e,formContent)}}>
+            <form id='pliable_form' onBlur={(event) => modalTabTrap(event)} onSubmit={(e : React.FormEvent) => {props.submitAction(e,formContent)}}>
                 <button aria-label='Cancel' className='cancel' onClick={props.cancelAction}>X</button>
                 <textarea value={formContent} onChange={handleContent} id='pliable_form' name='pliable_form' autoFocus={true} rows={5}></textarea>
                 <button className='submit' type='submit'>Submit</button>
