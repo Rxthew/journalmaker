@@ -5,7 +5,7 @@
 
 This app provides a template for a journal. 
 
-[Live Demo](https://rxthew/github.io/journalmaker)
+[Live Demo](https://rxthew.github.io/journalmaker)
 
 
 ## Remarks 
