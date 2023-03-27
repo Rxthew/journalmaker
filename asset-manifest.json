@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/journalmaker/static/css/main.9e404a88.css",
-    "main.js": "/journalmaker/static/js/main.5b870bc5.js",
-    "static/media/add.svg": "/journalmaker/static/media/add.fa08693af189c5f9b581148634b5ab09.svg",
+    "main.js": "/journalmaker/static/js/main.2553f21f.js",
+    "static/media/add.svg": "/journalmaker/static/media/add.e401b000add9aff33c90f49e5574f15b.svg",
+    "static/media/print.svg": "/journalmaker/static/media/print.b0699d3963c76fdb330c387f58100bb5.svg",
     "index.html": "/journalmaker/index.html",
-    "static/media/print.svg": "/journalmaker/static/media/print.3cc76ade36a94a349e281f5798f324a7.svg",
-    "static/media/delete.svg": "/journalmaker/static/media/delete.1e7fcca39a075972136eb5c50bf00240.svg",
-    "static/media/edit.svg": "/journalmaker/static/media/edit.771194f3a4b3301f064545d6afa86dd3.svg",
+    "static/media/delete.svg": "/journalmaker/static/media/delete.75092db6b1dadd99b4728dd48557cbf4.svg",
+    "static/media/edit.svg": "/journalmaker/static/media/edit.4d730ed4c73790292391d46ec61fd12e.svg",
     "main.9e404a88.css.map": "/journalmaker/static/css/main.9e404a88.css.map",
-    "main.5b870bc5.js.map": "/journalmaker/static/js/main.5b870bc5.js.map"
+    "main.2553f21f.js.map": "/journalmaker/static/js/main.2553f21f.js.map"
   },
   "entrypoints": [
     "static/css/main.9e404a88.css",
-    "static/js/main.5b870bc5.js"
+    "static/js/main.2553f21f.js"
   ]
 }
