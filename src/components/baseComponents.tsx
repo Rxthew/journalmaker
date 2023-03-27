@@ -72,7 +72,8 @@ const FormElement = function(props:formProps):JSX.Element{
             return
         }
         const cancel = Array.from(parent.children)[0] as HTMLButtonElement
-        setTimeout(() => cancel.focus(),0)
+        window.requestAnimationFrame(() => cancel.focus());
+        
 
     }
 
